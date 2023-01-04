@@ -1,0 +1,70 @@
+POST http://localhost:3001/new
+Content-Type: application/json
+
+{
+ "name":"Testi",
+ "people":["ilkka","eelis"],
+ "hash":1234,
+ "password":"123"
+}
+
+###
+POST http://localhost:3001/new
+Content-Type: application/json
+
+{
+ "name":"Testi",
+ "people":["ilkka","eelis"],
+ "hash":1234
+}
+
+###
+
+PUT http://localhost:3001/add/a3441916821a
+Content-Type: application/json
+
+{
+ "person":"Ngo",
+ "password":123
+}
+
+###
+
+PUT http://localhost:3001/add/1234
+Content-Type: application/json
+
+{
+ "person":"Ngo"
+}
+
+
+###
+GET http://localhost:3001/all
+Content-Type: application/json
+
+
+
+###
+GET http://localhost:3001/1234
+Content-Type: application/json
+
+###
+DELETE http://localhost:3001/delete
+Content-Type: application/json
+
+###
+
+POST http://localhost:3001/drewDate
+Content-Type: application/json
+
+{
+ "hash":"1234",
+ "password":123
+}
+
+###
+DELETE http://localhost:3001/drewDate
+Content-Type: application/json
+###
+GET http://localhost:3001/drewDate/1234
+Content-Type: application/json

@@ -1,0 +1,91 @@
+.App{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.generatorCard{
+
+  text-align: inherit;
+  margin: auto;
+  width: 60%;
+  min-height: 400px;
+  height: 80%;
+  border: 1px solid black;
+
+}
+
+.Generator{
+  box-sizing: border-box;
+  margin: auto;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  width: 80%;
+  height: auto;
+  padding: 30px;
+  padding-bottom: 30px;
+  color: red;
+  border: 1px solid black;
+}
+
+.AddName{
+
+}
+
+.Menu{
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  color: black;
+  width: 50%;
+  margin-left: 33%;
+  font-size: 10px;
+}
+
+.menuConnection{
+  text-align: center;
+  width: 95%;
+  align-items: center;
+  height: 100px;
+  margin: auto;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  border: 1px solid black;
+  color: blue ;
+  display: flex;
+
+}
+
+
+
+.MenuButton{
+  float:left;
+  margin: 10px;
+  
+}
+
+.MenuButton:hover{
+  color: grey;
+  cursor: pointer;
+}
+
+.Table{
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  width: 50%;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.drewButton{
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 5px;
+
+  
+}
