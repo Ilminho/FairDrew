@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import drawRouter from "../routers/drawRouter";
 
 const initialState = []
-const personSlice = createSlice({
-    name:"persons",
+const dbPersonSlice = createSlice({
+    name:"dbpersons",
     initialState,
     reducers:{
-        newPersons(state, action){
+        newDBPersons(state, action){
             return action.payload
         },
         deletePerson(state,action){
@@ -24,7 +24,7 @@ const personSlice = createSlice({
 export const setPersons = (persons)=>{
     return async dispatch=>{
         console.log(persons);
-        dispatch(newPersons(persons))
+        dispatch(newDBPersons(persons))
     }
 }
 
@@ -35,12 +35,12 @@ export const removePerson = (person) =>{
     }
 }
 
-export const initializePersons = (hash) => {
+export const initializeDBPersons = (hash) => {
     return async dispatch=>{
         const drew = await drawRouter.modifyDrewWithHash(hash)
-        console.log("Data");
-        console.log(drew);
-        dispatch(newPersons(drew[0]))
+        console.log(hash);
+        console.log(drew[0]);
+        dispatch(newDBPersons(drew[0]))
     }
 }
 
@@ -50,6 +50,6 @@ export const pushPerson=(person)=>{
     }
 }
 
-export const {newPersons, deletePerson,addPerson} = personSlice.actions
+export const {newDBPersons, deletePerson,addPerson} = dbPersonSlice.actions
 
-export default personSlice.reducer
+export default dbPersonSlice.reducer

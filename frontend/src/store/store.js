@@ -8,12 +8,16 @@ import tokenReducer from '../reducers/tokenReducer'
 
 import personReducer from '../reducers/personReducer'
 import generatorReducer from '../reducers/generatorReducer'
+import dbPersonReducer from '../reducers/dbPersonReducer'
+import hashReducer from '../reducers/hashReducer'
 
 const store = configureStore({
   reducer:{
 
     persons: personReducer,
-    generator: generatorReducer
+    generator: generatorReducer,
+    dbpersons: dbPersonReducer,
+    hash: hashReducer
 
   }
 })
