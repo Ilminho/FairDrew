@@ -23,7 +23,7 @@ function App() {
 
   const dispatch = useDispatch()
   useEffect(()=>{
-    //dispatch(initializeDBPersons("dbe878e88ab6"))
+    dispatch(initializeDBPersons())
     dispatch(setPersons(Persons))
   },[])
 

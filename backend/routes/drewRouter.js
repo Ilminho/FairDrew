@@ -82,4 +82,24 @@ drewRouter.put("/add/:id", async (req,res)=>{
 
 })
 
+drewRouter.get("/get/:hae", async (req,res)=>{
+    const haku = req.params.hae
+    let result = await Drew.findOne({'name': haku}, 'name people')
+    if(!result){
+        result = await Drew.findOne({'hash':haku}, 'name people')
+    }
+
+    if(!result){
+        res.status(404).send("Something went wrong")
+        return
+    }
+
+    res.send(result)
+
+})
+
+drewRouter.get("/get/testtest", (req,res)=>{
+    const testiData = 0
+})
+
 module.exports = drewRouter

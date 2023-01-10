@@ -1,5 +1,6 @@
 import axios from "axios"
 const baseUrl = "http://localhost:3001/"
+const testiUrl = "http://localhost:3002/offline"
 
 const getDrewWithHash =(hash)=>{
     let data = axios.get(baseUrl+hash)
@@ -8,10 +9,14 @@ const getDrewWithHash =(hash)=>{
 
 const modifyDrewWithHash = async (hash)=>{
     let data = await getDrewWithHash(hash)
-    return data
+    return data.data[0]
+}
 
-
+const getTestData = async()=>{
+    let data = await axios.get(testiUrl)
+    console.log(data.data);
+    return data.data
 }
 
 
-export default {getDrewWithHash, modifyDrewWithHash}
+export default {getDrewWithHash, modifyDrewWithHash, getTestData}

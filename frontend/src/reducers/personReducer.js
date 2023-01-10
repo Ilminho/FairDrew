@@ -37,7 +37,7 @@ export const removePerson = (person) =>{
 
 export const initializePersons = (hash) => {
     return async dispatch=>{
-        const drew = await drawRouter.modifyDrewWithHash(hash)
+        const drew = await drawRouter.getTestData()
         console.log("Data");
         console.log(drew);
         dispatch(newPersons(drew[0]))

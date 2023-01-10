@@ -22,7 +22,12 @@ drewDateSchema.set("toJSON", {
 })
 
 const mongoUrl = `mongodb+srv://Ilminho:${password}@cluster0.nfgcz.mongodb.net/?retryWrites=true&w=majority`
-mongoose.connect(mongoUrl)
+
+try{
+    mongoose.connect(mongoUrl)
+} catch (error) {
+    console.log("Mongoose error DateDrew");
+}
 mongoose.set("strictQuery", true)
 
 const db = mongoose.connection;

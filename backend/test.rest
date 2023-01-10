@@ -68,3 +68,8 @@ Content-Type: application/json
 ###
 GET http://localhost:3001/drewDate/1234
 Content-Type: application/json
+
+###
+GET http://localhost:3001/get/dbe878e88ab6
+Content-Type: application/json
+
