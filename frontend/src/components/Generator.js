@@ -7,6 +7,7 @@ import {connect} from "react-redux"
 import { removePerson } from "../reducers/personReducer"
 import { useDispatch } from "react-redux"
 import "../App.css"
+import ExistingDraw from "./ExistingDraw"
 
 
 const Generator = (props)=>{
@@ -89,7 +90,10 @@ const Generator = (props)=>{
     }
 
     return(
+        <>
         <SearchDraw/>
+        <ExistingDraw/>
+        </>
     )
 
 

@@ -37,7 +37,7 @@ export const removePerson = (person) =>{
 
 export const initializeDBPersons = (hash) => {
     return async dispatch=>{
-        const drew = await drawRouter.getDrewWithHash("dbe878e88ab6")
+        const drew = await drawRouter.getTestData()
         dispatch(newDBPersons(drew))
     }
 }
