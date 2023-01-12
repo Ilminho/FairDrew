@@ -2,7 +2,7 @@ import { connect } from "react-redux"
 import { hashSetter } from "../reducers/hashReducer"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { initializeDBPersons } from "../reducers/dbPersonReducer"
+import { initializeDBPersons, removePerson } from "../reducers/dbPersonReducer"
 
 const SearchDraw = ()=>{
 
@@ -18,13 +18,14 @@ const SearchDraw = ()=>{
             console.log("jee");
             dispatch(hashSetter(hash))
             dispatch(initializeDBPersons(hash))
+
             setHash("")
         }
     }
 
     return(
         <div>
-            <input placeholder="Search by name or hash" onChange={hashValue}
+            <input placeholder="Search by code" onChange={hashValue}
             value={hash} onKeyDown={enterNewHash}
             />
         </div>

@@ -28,10 +28,10 @@ export const setPersons = (persons)=>{
     }
 }
 
-export const removePerson = (person) =>{
+export const removeDBPerson = (name, person) =>{
     return async dispatch=>{
-        console.log(person);
-        dispatch(deletePerson(person))
+        const data = await drawRouter.deletePerson(name,person)
+        dispatch(newDBPersons(data))
     }
 }
 

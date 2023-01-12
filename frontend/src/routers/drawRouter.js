@@ -1,6 +1,9 @@
 import axios from "axios"
 const baseUrl = "http://localhost:3001/"
 const testiUrl = "http://localhost:3002/offline"
+const passwordTest = "http://localhost:3002/passwordChecker" 
+const deleteTest = "http://localhost:3002/offlineDelete"
+
 
 const getDrewWithHash =(hash)=>{
     let data = axios.get(baseUrl+hash)
@@ -18,5 +21,18 @@ const getTestData = async()=>{
     return data.data
 }
 
+const checkPassword = async (password, name)=>{
+    let sendData = {password:password, name:name}
+    let data = await axios.post(passwordTest,sendData)
+}
 
-export default {getDrewWithHash, modifyDrewWithHash, getTestData}
+const deletePerson = async (name, people)=>{
+    let toDelete = {name:name, people:people}
+    let data = await axios.post(deleteTest,toDelete)
+    console.log(data.data);
+
+    return data.data
+}
+
+
+export default {getDrewWithHash, modifyDrewWithHash, getTestData, deletePerson}
