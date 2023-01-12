@@ -2,6 +2,7 @@ import "../App.css"
 import { useState } from "react"
 import { connect } from "react-redux"
 import axios from "axios"
+import drawRouter from "../routers/drawRouter"
 
 const CreateDraw = ()=>{
 
@@ -12,6 +13,15 @@ const CreateDraw = ()=>{
     const [confrimPW, setConfirmPW]=useState("")
     const [pw, setPw]=useState("")
     const [editable, setEditable] = useState(false)
+
+    const clearAll = ()=>{
+        setNames([])
+        setPassword(false)
+        setDrewname("")
+        setName("")
+        setPw("")
+        setConfirmPW("")
+    }
 
     const changePassword = ()=>{
         setPassword(!password)
@@ -56,10 +66,14 @@ const CreateDraw = ()=>{
             console.log("pw and cpw doesnt match");
             return
         }
+
+        
         const draw = {name:drewname, persons:names,password:pw, editable:true}
         console.log(draw);
-        const response = await axios.post("http://localhost:3002/new",draw)
-        console.log(response.data);
+        //const response = await axios.post("http://localhost:3002/new",draw)
+
+        const response = await drawRouter.createDrew(draw)
+        console.log(response);
     } 
     
 
@@ -110,6 +124,8 @@ const CreateDraw = ()=>{
 
                     </>
                 :<></>}
+                <br></br>
+                <button onClick={clearAll}>Clear all</button>
                 <br></br>
                 <button onClick={CreateNewDraw}>Create a draw</button>
         </div>

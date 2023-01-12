@@ -34,5 +34,12 @@ const deletePerson = async (name, people)=>{
     return data.data
 }
 
+const createDrew = async (drew)=>{
+    let data = await axios.post(baseUrl+"new", drew)
+    console.log(data)
 
-export default {getDrewWithHash, modifyDrewWithHash, getTestData, deletePerson}
+    return data.data
+}
+
+
+export default {getDrewWithHash, modifyDrewWithHash, getTestData, deletePerson, createDrew}

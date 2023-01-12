@@ -23,8 +23,14 @@ drewRouter.get("/:id", async (req,res)=>{
 drewRouter.post("/new", async (req,res)=>{    
     const drewToAdd = req.body
     let hash = generate12StringHash()
+    console.log("drewRouter");
 
-    if(drewToAdd.password!=undefined){
+    console.log(drewToAdd.password==="");
+
+    if(drewToAdd.password!=undefined&&drewToAdd.password!==""){
+        console.log("password:" + drewToAdd.password);
+        console.log("DrewPassword");
+
         const saltrounds = 4
 
         const passwordHash = await bcrypt.hash(drewToAdd.password, saltrounds)
@@ -36,13 +42,12 @@ drewRouter.post("/new", async (req,res)=>{
         const isHashUsed = await Drew.find({hash:hash})
         if(isHashUsed.length<1){
             break;
-        }  
-
+        }
         console.log("rundaa");
-       hash = generate12StringHash()   
+        hash = generate12StringHash()   
     }
 
-    drewToAdd.hash = hash    
+    drewToAdd.hash = hash
     const drew = await new Drew(drewToAdd)
     const result  = await drew.save()
     res.send(result)
