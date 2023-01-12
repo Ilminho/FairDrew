@@ -26,7 +26,7 @@ const Menu = (props)=>{
     return(
         <div className="menuConnection">
             <div onClick={()=>setSetting(0)} className={selected(0)}>Quick draw</div>
-            <div onClick={()=>setSetting(1)} className={selected(1)}>Customize quick draw</div>
+            <div onClick={()=>setSetting(1)} className={selected(1)}>Create a draw</div>
             <div onClick={()=>setSetting(2)} className={selected(2)}>Existing draw</div>        
         </div>
     )

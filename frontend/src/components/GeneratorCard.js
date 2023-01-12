@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import "../App.css"
 import GeneratorConnection from "./Generator"
 import MenuConnection from "./Menu"
+import CreateDrawConnection from "./CreateDraw"
 
 const GeneratorCard = (props)=>{
 
@@ -11,7 +12,6 @@ const GeneratorCard = (props)=>{
             GeneratorCard
             <MenuConnection/>
             <GeneratorConnection/>
-            
         </div>
     )
 }

@@ -56,6 +56,16 @@
 
 }
 
+.CreateDrawTable{
+  padding: 20px;
+  align-items: center;
+  text-align: center;
+  border: 1px solid black;
+  margin:auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 
 
 .MenuButton{

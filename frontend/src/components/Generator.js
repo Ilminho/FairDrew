@@ -8,6 +8,7 @@ import { removePerson } from "../reducers/personReducer"
 import { useDispatch } from "react-redux"
 import "../App.css"
 import ExistingDraw from "./ExistingDraw"
+import CreateDrawConnection from "./CreateDraw"
 
 
 const Generator = (props)=>{
@@ -85,7 +86,7 @@ const Generator = (props)=>{
 
     if(props.generator===1){
         return(
-            <div>Customize quick draw</div>
+            <CreateDrawConnection/>
         )
     }
 

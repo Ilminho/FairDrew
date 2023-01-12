@@ -58,6 +58,29 @@ app.post("/offlineDelete", (req,res)=>{
     res.send("/offline delete went wrong")
 })
 
+app.post("/new", (req,res)=>{
+    console.log(req.body);
+    const newDraw = req.body
+    if(req.body===undefined)
+        res.sendStatus(500)
+    if(!newDraw.name)
+        res.status(500).send("You need a name")
+
+    if(newDraw.password===undefined)
+        newDraw.password=""
+        
+    newDraw.hash="1234"
+
+    console.log("NewDraw");    
+
+    console.log(newDraw);
+
+    console.log("NewDraw");
+
+    res.send(newDraw)
+
+})
+
 
 const server = http.createServer(app)
 
