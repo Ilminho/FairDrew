@@ -8,14 +8,51 @@ import { removePerson } from "../reducers/personReducer"
 import { useDispatch } from "react-redux"
 import TableRowConnection from "./TableRow"
 
-const ExistingDraw = (props)=>{
+const AddPeople = ()=>{
+    const [person, setPerson] = useState("")
+
+    const changePerson = (e)=>{
+        setPerson(e.target.value)
+    }
+
+    const onEnter = (e)=>{
+        if(e.keyCode===13){
+            console.log("Adding " + person);
+        }
+    }
+
     return (
         <div>
+            <input placeholder="Add person" onKeyDown={onEnter} onChange={changePerson}></input>
+        </div>
+    )
+
+}
+
+const ExistingDraw = (props)=>{
+
+    const [pw, setPW] = useState("")
+
+    const changePW = (e)=>{
+        setPW(e.target.value)
+        localStorage.setItem("pw",e.target.value)
+        console.log(localStorage.getItem("pw"));
+
+    }
+
+    return (
+        <div>
+            
             <div className="Table">
+
+            {props.needPassword?<input placeholder="Insert password" onChange={changePW}></input>:<></>}
+            <AddPeople/>
+
+
                 <table>
                     <thead>
                     <tr>
-                        <th>Name: {props.dbpersons.name?<></>:props.dbpersons.name}</th>
+                        <th>Name: {props.dbpersons.name?props.dbpersons.name:<></>}</th>
                         <th>Delete</th>
                     </tr>
                     </thead>
@@ -29,10 +66,15 @@ const ExistingDraw = (props)=>{
 }
 
 const mapStateProps=(state)=>{
+    
+    const personsToMap = ((people, name)=>({people,name}))(state.persons)
+    const needPassword = state.dbpersons.password
+
     return{
-        persons:state.persons,
+        persons:personsToMap,
         generator:state.generator,
-        dbpersons: state.dbpersons
+        dbpersons: state.dbpersons,
+        needPassword:needPassword
     }
 }
 

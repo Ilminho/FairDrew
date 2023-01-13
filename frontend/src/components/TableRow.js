@@ -14,7 +14,7 @@ const TableRow = (props)=>{
         {
             typeof props.person==='object'?
             dispatch(removePerson(props.person.id)):
-            dispatch(removeDBPerson(props.dbpersons.name, props.person))
+            dispatch(removeDBPerson(props.dbpersons.hash, props.person,""))
         }
         
         

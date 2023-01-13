@@ -18,7 +18,7 @@ const checkPassword = async (password, personsToUpdate)=>{
 }
 
 const generate12StringHash = () =>{
-    return crypto.randomBytes(6).toString('hex')
+    return crypto.randomBytes(5).toString('hex')
 }
 
 module.exports = {checkPassword, generate12StringHash}

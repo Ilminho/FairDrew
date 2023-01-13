@@ -5,14 +5,23 @@ const passwordTest = "http://localhost:3002/passwordChecker"
 const deleteTest = "http://localhost:3002/offlineDelete"
 
 
-const getDrewWithHash =(hash)=>{
-    let data = axios.get(baseUrl+hash)
-    return data.then(res=>res.data)
+const getDrewWithHash = async(hash)=>{
+    let data = await axios.get(baseUrl+"get/"+hash)
+    return data.data
 }
 
 const modifyDrewWithHash = async (hash)=>{
     let data = await getDrewWithHash(hash)
     return data.data[0]
+}
+
+const addWithHash = async (hash, person, password)=>{
+    const dataToSend = {hash:hash, person:person, password:password}
+
+    const response = await axios.put(baseUrl+"add/"+hash, dataToSend)
+
+    console.log(response);
+
 }
 
 const getTestData = async()=>{
@@ -26,9 +35,10 @@ const checkPassword = async (password, name)=>{
     let data = await axios.post(passwordTest,sendData)
 }
 
-const deletePerson = async (name, people)=>{
-    let toDelete = {name:name, people:people}
-    let data = await axios.post(deleteTest,toDelete)
+const deletePerson = async (hash, person, password)=>{
+    !password?password="":password=password;
+    let toDelete = {hash:hash, person:person, password:hash}
+    let data = await axios.post(baseUrl+"deletePerson",toDelete)
     console.log(data.data);
 
     return data.data

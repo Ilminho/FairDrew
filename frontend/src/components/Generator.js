@@ -2,7 +2,7 @@ import {useState, useEffect} from "react"
 import Table from "./Table"
 import Persons from "./Persons"
 import SearchDraw from "./SearchDraw"
-import { pushPerson } from "../reducers/personReducer"
+import { pushPerson, setPersons } from "../reducers/personReducer"
 import {connect} from "react-redux"
 import { removePerson } from "../reducers/personReducer"
 import { useDispatch } from "react-redux"
@@ -20,6 +20,10 @@ const Generator = (props)=>{
 
     const changeName = (e)=>{
         setName(e.target.value)
+    }
+
+    const clearAll = ()=>{
+        dispatch(setPersons([]))
     }
 
     const drawRandom = ()=>{
@@ -72,6 +76,12 @@ const Generator = (props)=>{
                     
                     
                 </div>
+
+                <div>
+                    <button onClick={clearAll}>
+                        Clear all
+                    </button>
+                </div>
     
                 <div className="drewButton">
                     <button onClick={drawRandom}>Draw a random person</button>
@@ -108,7 +118,8 @@ const mapStateProps=(state)=>{
 }
 
 const dispatchProps={
-    removePerson
+    removePerson,
+    setPersons
 }
 
 const GeneratorConnection = connect(mapStateProps,dispatchProps)(Generator)

@@ -28,9 +28,16 @@ export const setPersons = (persons)=>{
     }
 }
 
-export const removeDBPerson = (name, person) =>{
+export const removeDBPerson = (name, person,password) =>{
+
+
+    console.log("RemveDBPerson");
+    console.log(name);
+    console.log(person);
+    console.log(password);
+
     return async dispatch=>{
-        const data = await drawRouter.deletePerson(name,person)
+        const data = await drawRouter.deletePerson(name,person,password)
         dispatch(newDBPersons(data))
     }
 }
@@ -38,6 +45,12 @@ export const removeDBPerson = (name, person) =>{
 export const initializeDBPersons = (hash) => {
     return async dispatch=>{
         const drew = await drawRouter.getTestData()
+        dispatch(newDBPersons(drew))
+    }
+}
+export const initializeDBPersonsWithHash = (hash) => {
+    return async dispatch=>{
+        const drew = await drawRouter.getDrewWithHash(hash)
         dispatch(newDBPersons(drew))
     }
 }

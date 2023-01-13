@@ -22,6 +22,7 @@ drewRouter.get("/:id", async (req,res)=>{
 
 drewRouter.post("/new", async (req,res)=>{    
     const drewToAdd = req.body
+    console.log(drewToAdd);
     let hash = generate12StringHash()
     console.log("drewRouter");
 
@@ -89,9 +90,9 @@ drewRouter.put("/add/:id", async (req,res)=>{
 
 drewRouter.get("/get/:hae", async (req,res)=>{
     const haku = req.params.hae
-    let result = await Drew.findOne({'name': haku}, 'name people')
+    let result = await Drew.findOne({'hash': haku}, 'name people password hash')
     if(!result){
-        result = await Drew.findOne({'hash':haku}, 'name people')
+        result = await Drew.findOne({'name':haku}, 'name people passsword hash')
     }
 
     if(!result){
@@ -99,12 +100,54 @@ drewRouter.get("/get/:hae", async (req,res)=>{
         return
     }
 
+
+    console.log(result.password);
+    result.password===undefined?result.password=false:result.password=true;
+
     res.send(result)
 
 })
 
 drewRouter.get("/get/testtest", (req,res)=>{
     const testiData = 0
+})
+
+drewRouter.post("/deletePerson", async (req,res)=>{
+
+
+
+    const {hash, password, person} = req.body
+
+    console.log(req.body);
+
+    if(!person||!hash){
+        res.status(500).send("Error with person or hash")
+        return
+    }
+
+    const personsToUpdate=await Drew.findOne({hash:hash},'people password')
+
+    console.log("password");
+    console.log(password);
+
+    console.log();
+
+    if(await checkPassword(password,personsToUpdate)===false){
+        res.status(400).send("Error with password or hash")
+        return
+    }
+
+    let personsArray = personsToUpdate.people
+    personsArray=personsArray.filter(p=>p!==person)
+
+
+    const toUpdate = await Drew.findOneAndUpdate({hash: hash}, {people: personsArray},
+        {returnOriginal:false})
+
+    res.send(toUpdate)    
+
+
+
 })
 
 module.exports = drewRouter

@@ -2,7 +2,7 @@ import { connect } from "react-redux"
 import { hashSetter } from "../reducers/hashReducer"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { initializeDBPersons, removePerson } from "../reducers/dbPersonReducer"
+import { initializeDBPersons, initializeDBPersonsWithHash, removePerson } from "../reducers/dbPersonReducer"
 
 const SearchDraw = ()=>{
 
@@ -17,7 +17,7 @@ const SearchDraw = ()=>{
 
             console.log("jee");
             dispatch(hashSetter(hash))
-            dispatch(initializeDBPersons(hash))
+            dispatch(initializeDBPersonsWithHash(hash))
 
             setHash("")
         }

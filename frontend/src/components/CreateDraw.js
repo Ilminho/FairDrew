@@ -68,7 +68,7 @@ const CreateDraw = ()=>{
         }
 
         
-        const draw = {name:drewname, persons:names,password:pw, editable:true}
+        const draw = {name:drewname, people:names,password:pw, editable:true}
         console.log(draw);
         //const response = await axios.post("http://localhost:3002/new",draw)
 
@@ -79,7 +79,6 @@ const CreateDraw = ()=>{
 
     const addToNames =(e)=>{
         console.log(names);
-        e.preventDefault()
 
         if(names.filter(n=>n===name).length>0)
             return
@@ -96,13 +95,21 @@ const CreateDraw = ()=>{
         setNames(filteredNames)
     }
 
+    const enterNewName = (e)=>{
+        if(e.keyCode===13){
+            addToNames()
+        }
+    }
+
 
     return(
         <div>
                 <input type="text" placeholder="Name of the draw" onChange={changeDrewname} value={drewname}></input>
                 <br></br>
-                <input type="text" placeholder="Add people" onChange={changeName} value={name}></input>
-                <button onClick={addToNames}>Add person</button>
+                <input type="text" placeholder="Add people" onChange={changeName} value={name}
+                    onKeyDown={enterNewName}
+                ></input>
+                <button onClick={addToNames} >Add person</button>
 
                 <table className="CreateDrawTable">
                     <thead>
@@ -117,6 +124,7 @@ const CreateDraw = ()=>{
                 Editable without password?
                 <br></br>
                 <button onClick={changePassword}>{buttonText()}</button>
+                <br/>
                 {password?
                     <>
                         <input type="text" placeholder="Insert password" onChange={changePW} value={pw}></input>
