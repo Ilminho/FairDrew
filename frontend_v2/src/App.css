@@ -1,0 +1,23 @@
+
+
+.Header{
+    height: 30px;
+    width: 100%;
+}
+
+.DrawCard{
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+}
+
+.CreateDraw {
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+}
+  

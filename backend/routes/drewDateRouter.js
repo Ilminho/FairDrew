@@ -44,4 +44,11 @@ drewDateRouter.get("/drewDate/:id", async (req,res)=>{
 
 })
 
+drewDateRouter.get("/drewDate", async (req,res)=>{
+    const result = await DrewDate.find({})
+    res.send(result)
+
+
+})
+
 module.exports = drewDateRouter

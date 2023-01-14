@@ -58,15 +58,15 @@ POST http://localhost:3001/drewDate
 Content-Type: application/json
 
 {
- "hash":"1234",
- "password":123
+ "hash":"3170d21fa8",
+ "password":""
 }
 
 ###
 DELETE http://localhost:3001/drewDate
 Content-Type: application/json
 ###
-GET http://localhost:3001/drewDate/1234
+GET http://localhost:3001/drewDate/3170d21fa8
 Content-Type: application/json
 
 ###
