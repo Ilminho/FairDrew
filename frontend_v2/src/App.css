@@ -1,8 +1,30 @@
 
 
 .Header{
-    height: 30px;
+    text-align: center;
+    display: block;
+    margin: auto;
+    height: auto;
     width: 100%;
+    border: 1px solid black;   
+    position: relative;
+}
+
+.Header > h4{
+    border: 1px solid black;
+    width: fit-content;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+
+.Header > h4:hover {
+    color: red;
+    cursor:pointer;
+
+
 }
 
 .DrawCard{
@@ -20,4 +42,27 @@
     height: 300px;
     border: 1px solid black;
 }
+
+
+.closeButton {
+    border: 1px solid black;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-color: rgb(169, 169, 169);
+}
+
+.closeButton:hover:active{
+    background-color: rgb(190, 190, 190);
+}
+
+.closeButton:hover{
+    background-color: rgb(182, 182, 182);
+}
   
+
+.MenuButton{
+    background-color: white;
+    box-shadow: 0;
+    border: 1px solid black;
+}
