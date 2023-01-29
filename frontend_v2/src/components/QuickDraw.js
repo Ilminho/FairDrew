@@ -5,9 +5,17 @@ import { useState } from "react"
 const QuickDraw = ()=>{
 
     const [names, setNames] = useState([])
+    const [arvottu, setArvottu] = useState(-1)
 
     const submitName = (name)=>{
         setNames(names.concat({name:name, key:names.length}))
+    }
+
+    const randomFromNames = ()=>{
+        if(names.length<1)
+            return
+        
+        setArvottu(Math.floor(Math.random()*(names.length)))
     }
 
     const filterName = (key)=>{
@@ -36,6 +44,10 @@ const QuickDraw = ()=>{
                     </tbody>
 
                 </table>
+            </div>
+            <div className="Arvonta">
+                            <button onClick={()=>randomFromNames()}>Arvo satunnainen henkilö</button>
+                            <h3> {arvottu>-1?names[arvottu].name:"Arvontaa ei ole suoritettu"}</h3>
             </div>
         </div>
     )
