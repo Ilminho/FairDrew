@@ -4,7 +4,7 @@ import "../App.css"
 const CreateDraw = ()=>{
     return(
         <div className="CreateDraw">
-            CreateDraw
+            Create a draw
         </div>
     )
 }

@@ -6,8 +6,8 @@ const CustomInput = (props)=>{
 
     const enterValue = (e)=>{
         if(e.keyCode===13){
-            console.log("enter");
-            props.doEnter?props.doEnter():console.log("No DoEnter");
+            console.log(value);
+            props.doEnter?props.doEnter(value):console.log("No DoEnter");
             setValue("")
         }
     }
@@ -18,7 +18,7 @@ const CustomInput = (props)=>{
 
     return(
         <div>
-            <input onKeyDown={enterValue} placeholder={props.placeholder?props.placeholder:"No placeholder"} value={value} onChange={onChangeValue}></input>
+            <input onKeyDown={enterValue} placeholder={props.placeholder?props.placeholder:"No placeholder"} value={value} onChange={onChangeValue} className={props.class}></input>
         </div>
     )
 

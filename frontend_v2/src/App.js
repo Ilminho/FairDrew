@@ -1,17 +1,31 @@
 
 import CustomInput from './components/customInput';
-import Draws from './components/Draws';
-import CreateDraw from './components/CreateDraw';
+import ConnectDraws from './components/Draws';
 import "./App.css"
+import { useDispatch } from 'react-redux'
+import {connect} from "react-redux"
+import { numberSetter } from './reducers/cardReducer';
 
 function App() {
   return(
-    <div >
+    <div className='App'>
       <div >
-        <Draws/>
+        <ConnectDraws/>
       </div>
     </div>
   )
 }
 
-export default App;
+const mapStateProps = (state)=>{
+  return{
+    card:state.card
+  }
+}
+
+const dispatchProps = {
+  numberSetter
+}
+
+const ConnectApp = connect(mapStateProps, dispatchProps)(App)
+
+export default ConnectApp
