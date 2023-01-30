@@ -7,6 +7,7 @@ import QuickDraw from "./QuickDraw"
 import { useDispatch } from 'react-redux'
 import {connect} from "react-redux"
 import { numberSetter } from '../reducers/cardReducer';
+import HamburgerButton from "./HamburgerButton"
 
 
 
@@ -26,6 +27,7 @@ const Draws = (props)=>{
 
     return(
         <div className="DrawCard">
+            <HamburgerButton/>
             <button className="MenuButton" onClick={changeMenu}>{menu?"Sulje valikko":"Avaa valikko"}</button>
             {menu?<Menu className="Headers"/>:<></>}
             <div className="DrawBlur" style={{filter:menu?'blur(1px)':'blur(0px)'}}>

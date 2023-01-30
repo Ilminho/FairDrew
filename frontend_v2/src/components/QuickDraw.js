@@ -5,10 +5,11 @@ import { useState } from "react"
 const QuickDraw = ()=>{
 
     const [names, setNames] = useState([])
-    const [arvottu, setArvottu] = useState(-1)
+    const [arvottu, setArvottu] = useState(-2)
 
     const submitName = (name)=>{
         setNames(names.concat({name:name, key:names.length}))
+        setArvottu(-1)
     }
 
     const randomFromNames = ()=>{
@@ -19,15 +20,14 @@ const QuickDraw = ()=>{
     }
 
     const filterName = (key)=>{
+        names.length===1?setArvottu(-2):console.log("");
         setNames(names.filter(name=>name.key!==key))
-        console.log("Filtteröi");
     }
 
     return(
         <div className="QuickDraw">
-            <div>
                 <CustomInput placeholder="Syötä nimi ja paina enter" doEnter={submitName} class="QuickNimiInput"/>
-            </div>
+
             <div className="QuickTable">
                 <table>
                     <thead>
@@ -46,8 +46,8 @@ const QuickDraw = ()=>{
                 </table>
             </div>
             <div className="Arvonta">
-                            <button onClick={()=>randomFromNames()}>Arvo satunnainen henkilö</button>
-                            <h3> {arvottu>-1?names[arvottu].name:"Arvontaa ei ole suoritettu"}</h3>
+                            <button onClick={()=>randomFromNames()}>Suorita arvonta</button>
+                            <h3> {arvottu===-2?"Listassa ei nimiä":arvottu>-1?names[arvottu].name:"Arvontaa ei ole suoritettu"}</h3>
             </div>
         </div>
     )
