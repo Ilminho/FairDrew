@@ -94,12 +94,13 @@ button:active{
 
 .CreateDraw {
     color: black;
-    width: 100%;
-    height: 90%;
+    width: 99%;
+    height: 80%;
     border: 1px solid rgb(255, 255, 255);
     background-color: rgb(255, 255, 255);
     position: absolute;
     z-index: 1;
+    display: inline-block;
     
 }
 
@@ -242,4 +243,52 @@ th {
 /* Rotate last bar */
 .change .bar3 {
   transform: translate(0, -11px) rotate(45deg);
+}
+
+.FormTiedot{
+
+    bottom: 50px;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+
+}
+
+.FormButton{
+    margin: auto;
+    width: 33%;
+    bottom: 50px;
+}
+
+.FormButton > button {
+    width: 100%;
+}
+
+.CreateTiedot {
+    margin: auto;
+    width: auto;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.CreateTiedot > button, input {
+    width: 33%;
+    padding-top: 5px;
+    margin: 3px;
+}
+
+.DrawLine {
+    width: 100%-10px;
+    height: 1px;
+    background-color: rgb(153, 153, 153);
+    margin: 5px;
+
+}
+
+.LuotuArvonta{
+    margin: 5px;
+    margin-top: 10px;
+    border-top: 1px solid rgb(182, 182, 182);
+    text-align: center;
+    font-size: 12px;
 }

@@ -33,6 +33,7 @@ const Draws = (props)=>{
         <div className="DrawCard" onClick={(e)=>menuFalse(e)}>
             <HamburgerButton/>
             <button className="MenuButton" onClick={changeMenu}>{menu?"Sulje valikko":"Avaa valikko"}</button>
+            <div className="DrawLine"></div>
             {menu?<Menu className="Headers"/>:<></>}
             <div className="DrawBlur" style={{filter:menu?'blur(1px)':'blur(0px)'}}>
             {props.card===1?<QuickDraw/>:props.card===2?<SearchDraw/>:<CreateDraw/>}
