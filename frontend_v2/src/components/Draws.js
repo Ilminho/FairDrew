@@ -19,6 +19,10 @@ const Draws = (props)=>{
         setMenu(!menu)
     }
 
+    const menuFalse = (e)=>{
+        e.target.className==="MenuButton"||e.target.tagName==="H4"?console.log():setMenu(false)
+    }
+
 
     const whichDraw = (number)=>{
 
@@ -26,7 +30,7 @@ const Draws = (props)=>{
     }
 
     return(
-        <div className="DrawCard">
+        <div className="DrawCard" onClick={(e)=>menuFalse(e)}>
             <HamburgerButton/>
             <button className="MenuButton" onClick={changeMenu}>{menu?"Sulje valikko":"Avaa valikko"}</button>
             {menu?<Menu className="Headers"/>:<></>}

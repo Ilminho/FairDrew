@@ -24,6 +24,7 @@ const QuickDraw = ()=>{
         setNames(names.filter(name=>name.key!==key))
     }
 
+
     return(
         <div className="QuickDraw">
                 <CustomInput placeholder="Syötä nimi ja paina enter" doEnter={submitName} class="QuickNimiInput"/>
