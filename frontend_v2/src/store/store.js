@@ -5,7 +5,6 @@ import cardReducer from '../reducers/cardReducer'
 
 const store = configureStore({
   reducer:{
-
     card: cardReducer
   }
 })
