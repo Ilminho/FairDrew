@@ -11,6 +11,7 @@ const CreateDraw = ()=>{
     const [persons, setPersons] = useState([])
     const [color, setColor] = useState('black')
     const [form, setForm] = useState({})
+    const [phnimi, setPhnimi] = useState("Arvonnan nimi*")
 
     const changePassword = (e)=>{
         setPassword(e.target.value)
@@ -41,8 +42,12 @@ const CreateDraw = ()=>{
 
         name===""?gucci=false:gucci=true
 
-        if(!gucci)
+        if(!gucci){
+            setPhnimi("Nimi vaaditaan")
+            setColor("red")
             return
+        }
+            
         
         const formToAdd = {name:name, password:password, persons:persons, allowModify:modify}
         setForm(formToAdd)
@@ -54,10 +59,12 @@ const CreateDraw = ()=>{
     return(
         <div className="CreateDraw">
             <div className="CreateTiedot">
-                <input style={{borderBottom: "1px solid " +color}} placeholder="Arvonnan nimi *" onChange={(e)=>changeName(e)}></input> <br/>
-                <input placeholder="Salasana" onChange={(e)=>changePassword(e)}></input> <br/>
+                <input style={{borderBottom: "1px solid " +color}} placeholder={phnimi} onChange={(e)=>changeName(e)}></input> <br/>
+
+                <button onClick={changeModify}>Salli muokkaus: {modify?"Kyllä":"Ei"}</button><br/>
+                {modify?<input placeholder="Salasana" onChange={(e)=>changePassword(e)}></input>:""}
+                <br/>
                 <CustomInput placeholder="Lisää henkilö" doEnter={(name)=>changePersons(name)}/>
-                <button onClick={changeModify}>Salli muokkaus: {modify?"Kyllä":"Ei"}</button>
             </div>
             <div className="FormTiedot">
                 <p>Henkilöt: {persons}</p>
@@ -65,10 +72,13 @@ const CreateDraw = ()=>{
             <div className="FormButton">
                 <button onClick={createArvonta}>Luo arvonta</button>
             </div>
+
+            <div className="DrawLine"></div>
+
             <div className="LuotuArvonta">
                 {form.name===undefined?"Ei luotua arvontaa":
                     <>
-                    <p> Arvonta {form.name} luotu</p>
+                    <p> Arvonta "{form.name}" luotu</p>
                     <p> Hakukoodi: fa8r3iK33</p>
                     </>
                 }
