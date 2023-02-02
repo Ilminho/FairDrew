@@ -40,7 +40,7 @@ const QuickDraw = ()=>{
                     </thead>
                     <tbody>
                         {names.map(name=><tr key={name.key}>
-                            <th>{name.name + " "}<button className="deleteButton" onClick={()=>filterName(name.key)}>Poista</button></th>
+                            <td>{name.name + " "}<button className="deleteButton" onClick={()=>filterName(name.key)}>Poista</button></td>
                         </tr>)}
                     </tbody>
 

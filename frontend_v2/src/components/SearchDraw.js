@@ -1,12 +1,14 @@
 import "../App.css"
 import { useState } from "react"
+import CustomInput from "./customInput"
+import Arvonta from "./Arvonta"
 
 const SearchDraw = ()=>{
 
     const arvontaDB = [{
         name:"Ilkan arvonta",
         persons:["Ilkka","Jason","Joonas"],
-        arvonnat:[{arvottu:"12.07.1995", voittaja:"Ilkka",osallistujat:["Ilkka","Jason"]}],
+        arvonnat:[{arvottu:"12.07.1995", voittaja:"Ilkka",osallistujat:["Ilkka","Jason"]},{arvottu:"12.07.1996", voittaja:"Hönz",osallistujat:["Ilkka","Hönz","Jason"]}],
         modify:true,
         salasana: "1234",
         koodi:"1234"
@@ -21,8 +23,10 @@ const SearchDraw = ()=>{
     }
 ]
 
-    const [arvonta, setArvonta] = useState({})
+    const [arvonta, setArvonta] = useState()
     const [haku, setHaku] = useState("")
+    
+    
 
     const hakuOnChange = (e)=>{
         setHaku(e.target.value)
@@ -42,12 +46,15 @@ const SearchDraw = ()=>{
         <div className="SearchDraw">
             <div>
                 <input placeholder="Hae koodilla" onChange={(e)=>hakuOnChange(e)} onKeyDown={(e)=>searchFromDB(e)}></input> <br/>
-                {arvonta.modify?arvonta.salasana?<input placeholder="Syötä salasana"></input>:"":<></>}
+                {arvonta?.modify?arvonta.salasana?<input placeholder="Syötä salasana"></input>:"":<></>}
+                <CustomInput placeholder="Lisää nimi"/>
+                <button>Arvo</button>
+
             </div>
             <div className="HaettuArvonta">
-                <p> Nimi: {arvonta.name?arvonta.name:""}</p>
+                <p> Nimi: {arvonta?.name?arvonta.name:""}</p>
                 <div className="QuickTable">
-                    {arvonta.persons?
+                    {arvonta?.persons?
                                     <table>
                                     <thead>
                                     <tr>
@@ -65,6 +72,7 @@ const SearchDraw = ()=>{
                                 </table>:""}
 
                 </div>
+                <Arvonta arvonta={arvonta?arvonta:arvonta}/>
             </div>
         </div>
     )

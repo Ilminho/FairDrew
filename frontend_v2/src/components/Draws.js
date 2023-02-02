@@ -23,12 +23,6 @@ const Draws = (props)=>{
         e.target.className==="MenuButton"||e.target.tagName==="H4"?console.log():setMenu(false)
     }
 
-
-    const whichDraw = (number)=>{
-
-        return <CreateDraw/>
-    }
-
     return(
         <div className="DrawCard" onClick={(e)=>menuFalse(e)}>
             <HamburgerButton/>
