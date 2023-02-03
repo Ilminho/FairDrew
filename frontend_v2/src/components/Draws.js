@@ -20,14 +20,19 @@ const Draws = (props)=>{
     }
 
     const menuFalse = (e)=>{
-        e.target.className==="MenuButton"||e.target.tagName==="H4"?console.log():setMenu(false)
+        console.log(e.target.tagName);
+        let okList = ["MenuButton","Hamb","H4","bar1","bar2","bar3"]
+        menu?okList=["MenuButton","Hamb","H4"]:okList=okList
+        let ok=false
+        okList.forEach(cn=>cn===e.target.className||e.target.tagName===cn?ok=true:console.log())
+
+        ok?setMenu(true):setMenu(false)
+
     }
 
     return(
         <div className="DrawCard" onClick={(e)=>menuFalse(e)}>
-            <HamburgerButton/>
-            <button className="MenuButton" onClick={changeMenu}>{menu?"Sulje valikko":"Avaa valikko"}</button>
-            <div className="DrawLine"></div>
+            <HamburgerButton onClick={()=>changeMenu()} hambMenu={menu}/>
             {menu?<Menu className="Headers"/>:<></>}
             <div className="DrawBlur" style={{filter:menu?'blur(1px)':'blur(0px)'}}>
             {props.card===1?<QuickDraw/>:props.card===2?<SearchDraw/>:<CreateDraw/>}

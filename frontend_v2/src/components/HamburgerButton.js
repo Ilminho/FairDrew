@@ -1,11 +1,15 @@
+import { useState } from "react"
 import "../App.css"
 
-const HamburgerButton = ()=>{
+const HamburgerButton = (props)=>{
+
     return(
-        <div className="Hamb" >
-            <div className="bar1"></div>
-            <div  className="bar2"></div>
-            <div className="bar3"></div>
+        <div className="MenuButton">
+            <div className={props.hambMenu?"changeHamb":"Hamb"} onClick={()=>{props.onClick()}}  >
+                <div className="bar1"></div>
+                <div  className="bar2"></div>
+                <div className="bar3"></div>
+            </div>
         </div>
     )
 }

@@ -1,6 +1,7 @@
 import "../App.css"
 import CustomInput from "./customInput"
 import { useState } from "react"
+import Ruksi from "./Ruksi"
 
 
 const CreateDraw = ()=>{
@@ -21,6 +22,12 @@ const CreateDraw = ()=>{
     const changeName = (e)=>{
         e.target.value===""?setColor("red"):setColor("black")
         setName(e.target.value)
+    }
+
+    const filterPersons = (person) =>{
+        console.log(person);
+        const filtered = persons.filter(name=>person!==name)
+        setPersons(filtered)
     }
 
     const changePersons = (person)=>{
@@ -66,9 +73,11 @@ const CreateDraw = ()=>{
                 <br/>
                 <CustomInput placeholder="Lisää henkilö" doEnter={(name)=>changePersons(name)}/>
             </div>
+
             <div className="FormTiedot">
-                <p>Henkilöt: {persons}</p>
+                <div>Henkilöt: {persons.map(nimi=> <div key={nimi+4}>{nimi} <Ruksi onClick={()=>filterPersons(nimi)}/></div>)}</div>
             </div>
+            
             <div className="FormButton">
                 <button onClick={createArvonta}>Luo arvonta</button>
             </div>
