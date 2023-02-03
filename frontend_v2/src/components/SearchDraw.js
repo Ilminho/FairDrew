@@ -7,7 +7,7 @@ const SearchDraw = ()=>{
 
     const arvontaDB = [{
         name:"Ilkan arvonta",
-        persons:["Ilkka","Jason","Joonas"],
+        persons:["Ilkka","Jason","Joonas","Jani","Sorjonen","Mamma"],
         arvonnat:[{arvottu:"12.07.1995", voittaja:"Ilkka",osallistujat:["Ilkka","Jason"]},{arvottu:"12.07.1996", voittaja:"Hönz",osallistujat:["Ilkka","Hönz","Jason"]}],
         modify:true,
         salasana: "1234",
@@ -25,8 +25,16 @@ const SearchDraw = ()=>{
 
     const [arvonta, setArvonta] = useState()
     const [haku, setHaku] = useState("")
-    
-    
+    const [showArvonnat, setShowArvonnat] = useState(false)
+    const [osallistujat, setOsallistujat] = useState(false)
+
+    const changeOsallistujat = ()=>{
+        setOsallistujat(!osallistujat)
+    }
+
+    const checkAndCloseOsallistujat=(e)=>{
+        e?.target?.className!=="Osallistujat"?setOsallistujat(false):console.log();
+    }
 
     const hakuOnChange = (e)=>{
         setHaku(e.target.value)
@@ -41,14 +49,43 @@ const SearchDraw = ()=>{
 
     }
 
+    const closeArvonnat = (e)=>{
+
+        osallistujat?checkAndCloseOsallistujat(e):console.log();
+
+        let ignore = ["Näytä arvonnat","Näytä osallistujat","ArvontaIkkuna","Osallistujat"]
+        let toReturn = false
+
+        ignore.forEach((i)=>{
+            i===e?.target?.innerText||i===e?.target?.className?
+            toReturn=true:
+            console.log();
+        })
+
+        if(toReturn){
+            return
+        }
+
+
+        e?.target?.className==="ArvontaIkkuna"?
+        console.log():
+        setShowArvonnat(false)
+
+    }
+
 
     return(
-        <div className="SearchDraw">
+        <div className="SearchDraw" onClick={(e)=>closeArvonnat(e)}>
             <div>
                 <input placeholder="Hae koodilla" onChange={(e)=>hakuOnChange(e)} onKeyDown={(e)=>searchFromDB(e)}></input> <br/>
                 {arvonta?.modify?arvonta.salasana?<input placeholder="Syötä salasana"></input>:"":<></>}
                 <CustomInput placeholder="Lisää nimi"/>
                 <button>Arvo</button>
+                {
+                    arvonta?
+                    <button onClick={()=>{setShowArvonnat(!showArvonnat)}}>Näytä arvonnat</button>:
+                    <></>
+                }
 
             </div>
             <div className="HaettuArvonta">
@@ -72,7 +109,11 @@ const SearchDraw = ()=>{
                                 </table>:""}
 
                 </div>
-                <Arvonta arvonta={arvonta?arvonta:arvonta}/>
+                {
+                    showArvonnat?
+                    <Arvonta arvonta={arvonta?arvonta:arvonta} sulje={closeArvonnat} osallistujat={osallistujat} setOsallistujat={changeOsallistujat} closeOsallistujat={checkAndCloseOsallistujat}/>:
+                    <></>
+                }
             </div>
         </div>
     )

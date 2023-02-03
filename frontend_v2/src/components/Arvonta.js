@@ -7,13 +7,18 @@ const Arvonta =  (props)=>{
 
 
     const changeOsallistujat = (osallistujat)=>{
-
         setOsallistujat(osallistujat)
-        setShowosallistujat(!showosallistujat)
+        props.setOsallistujat()
+    }
+
+    const closeOsallistujat = (e)=>{
+
+        e?.target?.className==="Osallistujat"?console.log():setShowosallistujat(false);
     }
 
     return(
         <div className="ArvontaIkkuna">
+            <button onClick={(e)=>props.sulje(e)}>Sulje arvonnat</button>
             <table>
                 <thead>
                     <tr>
@@ -43,11 +48,19 @@ const Arvonta =  (props)=>{
                 </tbody>
 
             </table>
+
+
                         
 
-            {showosallistujat&&osallistujat?
-                osallistujat.map(osallistuja=><p key={osallistuja+"2"}>{osallistuja}</p>)
-                :<></>
+            {props.osallistujat&&osallistujat?
+                <div className="Osallistujat" onClick={(e)=>props.closeOsallistujat(e)}>
+                    <button onClick={()=>props.changeOsallistujat()}>Sulje</button>
+                    Osallistujat:
+                    {
+                        osallistujat.map(osallistuja=><p key={osallistuja+"2"}>{osallistuja}</p>)
+                    }
+                </div>:
+                <></> 
             }
 
 
@@ -58,6 +71,9 @@ const Arvonta =  (props)=>{
 export default Arvonta
 
 /*
+
+
+
             <p>Järjestetty: {props.arvonta?.arvottu?props.arvonta.arvottu:"Ei järjestetty/Vika"}</p>
             <p>Voittaja: {props.arvonta?.voittaja?props.arvonta.voittaja:"Ei voittajaa"}</p>
             <p>Osallistujat: </p>
