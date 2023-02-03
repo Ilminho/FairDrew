@@ -19,9 +19,9 @@ const Menu = (props)=>{
 
     return(
         <div className="Menu">
-            <h4 onClick={()=>clickHeader(1)}>Quick draw </h4>
-            <h4 onClick={()=>clickHeader(2)}>Existing draw</h4>
-            <h4 onClick={()=>clickHeader(3)}>Create a draw</h4>
+            <h4 onClick={()=>clickHeader(1)}>Nopea arvonta </h4>
+            <h4 onClick={()=>clickHeader(2)}>Etsi arvonta</h4>
+            <h4 onClick={()=>clickHeader(3)}>Luo arvonta</h4>
         </div>
     )
 }

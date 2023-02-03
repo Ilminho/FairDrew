@@ -14,8 +14,7 @@ const QuickDraw = ()=>{
 
     const randomFromNames = ()=>{
         if(names.length<1)
-            return
-        
+            return        
         setArvottu(Math.floor(Math.random()*(names.length)))
     }
 

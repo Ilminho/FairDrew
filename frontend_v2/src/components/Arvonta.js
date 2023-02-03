@@ -54,7 +54,7 @@ const Arvonta =  (props)=>{
 
             {props.osallistujat&&osallistujat?
                 <div className="Osallistujat" onClick={(e)=>props.closeOsallistujat(e)}>
-                    <button onClick={()=>props.changeOsallistujat()}>Sulje</button>
+                    <button onClick={()=>props.setOsallistujat()}>Sulje</button>
                     Osallistujat:
                     {
                         osallistujat.map(osallistuja=><p key={osallistuja+"2"}>{osallistuja}</p>)

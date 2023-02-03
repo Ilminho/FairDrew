@@ -51,9 +51,10 @@ const SearchDraw = ()=>{
 
     const closeArvonnat = (e)=>{
 
+
         osallistujat?checkAndCloseOsallistujat(e):console.log();
 
-        let ignore = ["Näytä arvonnat","Näytä osallistujat","ArvontaIkkuna","Osallistujat"]
+        let ignore = ["Näytä arvonnat","Näytä osallistujat","ArvontaIkkuna","Osallistujat","Sulje"]
         let toReturn = false
 
         ignore.forEach((i)=>{
@@ -72,7 +73,6 @@ const SearchDraw = ()=>{
         setShowArvonnat(false)
 
     }
-
 
     return(
         <div className="SearchDraw" onClick={(e)=>closeArvonnat(e)}>
